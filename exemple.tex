@@ -1,0 +1,215 @@
+\chapter{Comment utiliser le template}
+
+\section{Texte}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed purus ut nunc rhoncus tempor. Sed tristique nisi dictum sem malesuada pharetra. Phasellus porttitor dictum fringilla. Vivamus tortor odio, venenatis eget metus vitae, euismod auctor felis. Ut id dignissim nunc. Donec pellentesque accumsan tincidunt. Sed et magna massa. Donec et velit id enim interdum viverra. Aliquam vitae ultricies nulla. Vivamus sed neque posuere, tincidunt urna et, bibendum dolor.
+
+Vestibulum\footnote{Ceci est une note de bas de page.} at pretium ligula, nec tristique nunc. Donec posuere nibh ac efficitur scelerisque. Nam euismod tortor sed mi pulvinar lobortis. Vestibulum sodales ac arcu a aliquet. Praesent quis eros a mi tempus sagittis. Integer in hendrerit libero. Proin ac massa sit amet neque malesuada molestie. Duis in urna semper eros porta facilisis. Donec ut sagittis justo. Fusce faucibus, turpis in tempor rhoncus, risus est egestas ante, ut convallis ex leo in arcu. Fusce nec turpis eu ex molestie tristique. Cras scelerisque ipsum egestas, accumsan purus rutrum, aliquet nunc. Quisque pulvinar mi id libero elementum eleifend vel in risus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
+Praesent luctus neque id ante maximus dignissim. Praesent nisi nulla, consectetur in vehicula sed, tempor at felis. Pellentesque commodo ipsum velit, vel gravida lectus fermentum at. Pellentesque ut aliquam elit. Etiam id mollis diam. Nam vel mauris eget quam ultricies fermentum. Nunc sed urna porta, ultricies elit eu, dignissim leo~\cite{ref1}.
+
+\subsection{Sous-section}
+
+Ceci est une sous-section.
+
+\subsubsection{Sous-sous-section}
+
+Ceci est une sous-sous-section (à éviter).
+
+\section{Exemples de code}
+
+\subsection{Insérer une figure}
+
+Pour insérer une figure, entrer le code correspondant pour ajouter l'image.
+
+\begin{verbatim}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.5\textwidth]{simpsons.png}
+    \caption[Titre court]{Titre long.}
+    \label{fig:simpsons}
+\end{figure}
+\end{verbatim}
+
+Pour obtenir la figure~\ref{fig:simpsons},
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.5\textwidth]{simpsons.png}
+    \caption{Titre long.}
+    \label{fig:simpsons}
+\end{figure}
+
+\subsection{Insérer une équation}
+
+Pour insérer une équation, entrer le code suivant avec votre équation.
+
+\begin{verbatim}
+\begin{equation}
+    \hat{H} \psi = E \psi
+\end{equation}
+\end{verbatim}
+
+Pour obtenir,
+
+\begin{equation}
+    \hat{H} \psi = E \psi
+\end{equation}
+
+\subsection{Insérer un tableau}
+
+Pour insérer une équation, entrer le code suivant.
+
+\begin{verbatim}
+\begin{table}[htbp]
+    \centering
+    \caption{Titre du tableau}
+    \begin{tabular}{cccc}
+        \toprule
+        Col1 & Col2 & Col2 & Col3 \\
+        \midrule
+        1 & 6 & 87837 & 787 \\
+        2 & 7 & 78 & 5415 \\
+        3 & 545 & 778 & 7507 \\
+        4 & 545 & 18744 & 7560 \\
+        5 & 88 & 788 & 6344 \\
+        \bottomrule
+    \end{tabular}
+    \label{tab:1}
+\end{table}
+\end{verbatim}
+
+Pour obtenir,
+
+\begin{table}[htbp]
+    \centering
+    \caption{Titre du tableau}
+    \begin{tabular}{cccc}
+        \toprule
+        Col1 & Col2 & Col2 & Col3 \\
+        \midrule
+        1 & 6 & 87837 & 787 \\
+        2 & 7 & 78 & 5415 \\
+        3 & 545 & 778 & 7507 \\
+        4 & 545 & 18744 & 7560 \\
+        5 & 88 & 788 & 6344 \\
+        \bottomrule
+    \end{tabular}
+    \label{tab:1}
+\end{table}
+
+\subsection{Insérer une référence}
+
+Pour insérer une référence, ajouter d'abord votre fichier BibTeX.
+
+\begin{verbatim}
+\addbibresource{fichier.bib}
+\end{verbatim}
+
+Qui contient la référence,
+
+\begin{verbatim}
+@article{ref1,
+author = {Streit, Mark and Price, Carey and Gratton, Bob},
+doi = {10.XXXX/XXXXXXXX},
+journal = {Journal 1},
+number = {NN},
+pages = {PP},
+title = {Title},
+url = {url},
+volume = {VV},
+year = {YYYY}
+}
+\end{verbatim}
+
+Il s'agit ensuite simplement d'appeler la fonction appropriée.
+
+\begin{verbatim}
+Ceci est un exemple~\cite{ref1}.
+\end{verbatim}
+
+\subsection{Gestion des nombres et unités}
+
+La gestion des nombres et unités est laissée au package \href{https://ctan.org/pkg/siunitx}{siunitx}. Les fonctions les plus utiles sont:
+
+\begin{itemize}
+    \item \verb|\num{}|;
+    \item \verb|\si{}|;
+    \item \verb|\SI{}{}|.
+\end{itemize}
+
+L'avantage d'utiliser ce package est la définition des unités sans mode mathématique, la gestion automatique des espaces entre les valeurs et leurs unités ainsi que le changement rapide du caractère pour les décimales. Le code suivant sert d'exemple.
+
+\begin{verbatim}
+\num{2.56} est un nombre, tandis que \si{\angstrom} est une unité.
+Ensemble, c'est \SI{2.56}{\angstrom}.
+\end{verbatim}
+
+\num{2.56} est un nombre, tandis que \si{\angstrom} est une unité. Ensemble, c'est \SI{2.56}{\angstrom}.
+
+\subsection{Graphiques avancées}
+
+Pour la gestion des graphiques, l'inclusion en tant qu'une image (*.jpeg ou *.png) est tout à fait valide. Cependant, la police du graphique peut ne pas être concordante avec le reste du document. Pour cela, l'incorporation de graphique est faite avec le format *.pgf (facultatif).
+
+Par exemple,
+
+\begin{verbatim}
+\begin{figure}[htbp]
+  \centering
+  \input{Figures/graphique.pgf}
+  \caption[Titre court du graphique]{Titre long du graphique.}
+  \label{fig:surface}
+\end{figure}
+\end{verbatim}
+
+Produit le graphique suivant,
+
+\begin{figure}[htbp]
+  \centering
+  \input{Figures/graphique.pgf}
+  \caption[Titre court du graphique]{Titre long du graphique.}
+\end{figure}
+
+Remarquons la même police pour les titres d'axes et la police du texte. Ceci donne en général des graphiques d'une meilleure qualité.
+
+\subsection{Applications spécifiques à la chimie}
+
+Pour la chimie, nous faisons le plus souvent des équations chimiques et des schémas en 2D. Pour les équations chimiques, le package \href{https://ctan.org/pkg/mhchem}{mhchem} est l'outil de travail par excellence.
+
+\begin{verbatim}
+\ce{H2O}\\
+\ce{CrO4^2-}\\
+\ce{^{227}_{90}Th+}\\
+\ce{KCr(SO4)2.12H2O}\\
+\ce{A <=> B}\\
+\ce{A ->[H2O] B}
+\end{verbatim}
+
+Résulte en
+
+\ce{H2O}\\
+\ce{CrO4^2-}\\
+\ce{^{227}_{90}Th+}\\
+\ce{KCr(SO4)2.12H2O}\\
+\ce{A <=> B}\\
+\ce{A ->[H2O] B}
+
+Pour les structures en 2D, l'utilisation de ChemSketch est suffisante (l'utilisation de ChemDraw est tout à fait valide si vous possédez une license). Le but est de créer vos molécules en suivant les paramètres standards établis pour le journal de votre choix. Ensuite, nous exportons le fichier sous format *.pdf. L'importation dans Inkscape du fichier permet le rognage des bords. Pour insérer du texte, sélectionner d'abord vos molécules et transformer le tout en vecteur avec l'option \textit{Object to Path} sous l'onglet \textit{Path}. Vous pouvez alors ajouter le texte, comme le nom des molécules. Exporter le tout sous format *.pdf en cochant l'option pour obtenir un ficher *.tex en plus. L'importation se fait ainsi:
+
+\begin{verbatim}
+\begin{figure}[htbp]
+  \centering
+  \input{Figures/analgesiques_moyens.pdf_tex}
+  \caption{Titre long de la figure chimique.}
+\end{figure}
+\end{verbatim}
+
+Compile en
+
+\begin{figure}[htbp]
+  \centering
+  \input{Figures/analgesiques_moyens.pdf_tex}
+  \caption{Titre long de la figure chimique.}
+\end{figure}
+
+Cette manipulation permet d'obtenir le texte dans la figure avec la même police que dans le texte (serif). Cependant, la police des atomes dans les structures restent la même que celle sélectionnée dans ChemSketch (sans).

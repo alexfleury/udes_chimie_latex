@@ -1,0 +1,76 @@
+% @Author: flea2306
+% @Date: 2017-10-10
+% @Version: 1.0
+% @Last modified by: Alexandre Fleury
+% @Last modified time: 2017-10-17
+%
+% udes_chimie package.
+%
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{udes_chimie}[2017/10/17 v1.0]
+
+%------------------------- Scientific packages and options commands -------------------------
+\usepackage{physics} % Brackets (auto)redimension in physic formula
+\usepackage[separate-uncertainty=true]{siunitx} % Physical units
+\usepackage{textcomp} % Resolve incompatibilities between package microtype and siunitx
+\sisetup{locale=FR, mode=text} % FR is an option tu put ',' as a separator unit instead of '.'.
+\usepackage[euler]{textgreek} % Greek letter in text mode: \textalpha, ...
+\usepackage[version=4]{mhchem} % Chemical equation with \ce{}
+%--------------------------------------------------------------------------------------------
+
+%------------------------- Custom commands -------------------------
+\usepackage{xspace} % Command \xspace for custom command
+\newcommand{\tg}{T\textsubscript{g}\xspace}
+\newcommand{\etal}{et al.\xspace}
+\newcommand{\angstrom}{$\buildrel_\circ\over{\mathrm{A}}$\xspace}
+\newcommand{\gd}{{\textdelta}\xspace}
+\newcommand{\gm}{{\textmugreek}\xspace}
+\newcommand{\gk}{{\textkappa}\xspace}
+\newcommand{\invivo}{\textit{in vivo}\xspace}
+\newcommand{\invitro}{\textit{in vitro}\xspace}
+\newcommand{\insilico}{\textit{in silico}\xspace}
+%-------------------------------------------------------------------
+
+%------------------------- Custom title page -------------------------
+\def\presentation#1{\gdef\@presentation{#1}}
+\def\faculte#1{\gdef\@faculte{#1}}
+\def\universite#1{\gdef\@universite{#1}}
+\def\ville#1{\gdef\@ville{#1}}
+\def\province#1{\gdef\@province{#1}}
+\def\pays#1{\gdef\@pays{#1}}
+\def\date#1{\gdef\@date{#1}}
+
+\def\maketitle{
+\begin{titlepage}
+\let\footnotesize\small \let\footnoterule\relax \setcounter{page}{0}
+\null\vfill
+\topskip0pt
+\vspace*{\fill}
+\begin{center}
+{\large \bf \@title \par} \vskip .6in {\large par \par}
+\vskip .6in {\large \lineskip .75em
+\begin{tabular}[t]{c}\@author
+\end{tabular}\par}
+\vskip .6in {\large\@presentation \par}
+\vskip .6in {\large\@faculte \par}
+\vskip .2em {\large\@universite \par}
+%\vskip .6in {\large\@ville, \@province, \@pays, \monthyear \par}
+\vskip .6in {\large\@ville\ (\@province), \@pays, \@date}
+\end{center} \par
+\vspace*{\fill}
+\@thanks
+\vfill
+\null
+\end{titlepage}
+\setcounter{footnote}{0} \let\thanks\relax
+\gdef\@thanks{}\gdef\@author{}\gdef\@title{}\gdef\@presentation{}\gdef\@ville{}
+\gdef\@faculte{}\gdef\@universite{}\gdef\@province{}\gdef\@pays{}\gdef\@date{}\let\maketitle\relax
+}
+\def\monthyear{\ifcase\month\or
+janvier\or février\or mars\or avril\or mai\or juin\or
+juillet\or août\or septembre\or octobre\or novembre\or décembre\fi
+\space\number\year}
+%---------------------------------------------------------------------
+
+\endinput

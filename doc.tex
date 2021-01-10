@@ -1,0 +1,70 @@
+\begin{filecontents*}{\jobname.xmpdata}
+\Title{Titre}
+\Subject{Sujet}
+\Author{Prénom Nom}
+\Org{Laboratoire}
+\Keywords{Mots clé 1\sep Mots clé 2\sep Mots clé 3}
+\end{filecontents*}
+
+\documentclass[titlepage,oneside,letterpaper,12pt,french]{udes_chimie} % version électronique
+%\documentclass[titlepage,twoside,letterpaper,openright,12pt]{udes_chimie} % version imprimée
+
+\usepackage{udes_chimie}
+
+%------------------------- PDF/A-1b and Hyperref -------------------------
+\usepackage[a-1b]{pdfx}
+%\usepackage{hyperref}
+\hypersetup{%
+colorlinks=true, % Color links ON/OFF
+breaklinks=true,
+linkcolor= Black, % Intern links color
+bookmarksopen=true,
+hypertexnames=false
+}
+%-------------------------------------------------------------------------
+
+\addbibresource{doc.bib}
+
+
+\begin{document}
+\onehalfspacing
+
+\frontmatter
+
+\include{titre}
+
+%\include{jury}
+%\setcounter{page}{0}
+%\include{dedicace}
+%\include{citation}
+
+% Summary
+%\pagestyle{plain}
+%\pagenumbering{roman}
+%\setcounter{page}{0}
+%\include{sommaire}
+
+%\include{remerciements}
+
+\tableofcontents
+\cleardoublepage
+
+\listoftables
+\cleardoublepage
+
+\listoffigures
+
+
+\mainmatter
+\include{exemple}
+
+\backmatter
+\printbibliography[heading=bibnumbered]
+
+%\appendix
+%\renewcommand\chapterstring{Annexe}
+%\updatechaptername % Replace "Chapitre" by "Annexe" in ToC
+%\updatechapnumwidth % Adjust space between "Annexe" and its letter in ToC
+%\include{annexe1}
+
+\end{document}
